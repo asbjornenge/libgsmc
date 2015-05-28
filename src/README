@@ -1,0 +1,32 @@
+This directory contains the source code for the libgsmc library. This README
+is intended to give you an overview of how the code is structured, as well as 
+to provide documentation on how to add support for a new GSM module.
+
+libgsmc is an implementation of the ETSI 07.07 standard for GSM modems
+(the specification is available free of charge at www.etsi.org).
+
+So the starting place here is the file etsi707.h. This include file describes 
+the main data structures which serve as the foundation for the entire codebase.
+
+In particular, is the etsi_07_07 structure. This serves two purposes.
+First, it provides a reference for every possible feature listed in the
+ETSI standard. Second, it provides the framework needed to access any
+given ETSI supported functionality in your modem.
+
+Each element in the etsi_07_07 structure is a pointer a structure which
+defines the data needed to implement the specific functionality of the standard.
+
+For example, the CHUP element is available if you want to implement Call Hangup
+support (which is a basic requirement of all phones).
+
+The ETSI 7.07 standard is based on a simple command-response finite state
+machine. Consequently, each of the etsi_07_07 data elements is a pointer to
+a structure which implements the FSM for the command.
+
+The Finite State Machine (FSM) for each command is described by a GCR structure. 
+2. Adding a support for a new GSM modem.
+
+In short, one should just take an existing file (like generic.c) and 
+modify it for your GSM chip. Currently, the most advanced support is
+in the telit.c file. You can also start with this, and modify the 
+addresses of the routines appropriately.

@@ -1,0 +1,40 @@
+# 
+# Makefile for generating the relevant files needed by autoconf. This should
+# only be used by maintainers, who deal with the portability of the package.
+#
+# The files which get generated here are those used by configure.
+# It's presumed that you have autoconf installed in your PATH. If you don't,
+# you probably shouldn't be mucking with this stuff.
+#
+# libgsmc: In short, if you need to add new files to this tree, change the
+#	AC_OUTPUT variable in configure.in, run the clean target here, and
+#	then the configure target. You should then be all set to do just
+#	a './configure && make'
+
+all:	src/Makefile
+
+src/Makefile:	configure
+	./configure
+
+configure:
+	aclocal
+	autoheader
+	autoconf
+	automake --add-missing --copy
+	libtoolize --force --copy
+	autoconf
+
+# Clean everything except what's needed to run configure && make
+clean:
+	rm -rf autom4te.cache lib
+	rm -f config.log config.status 
+	rm -f aclocal.m4 stamp-h1
+	rm -f Makefile src/Makefile
+	rm -f src/*.o
+	rm -f src/*.la src/*.lo src/Makefile
+	rm -rf src/.deps src/.libs
+
+# Restore everything so that the autoconf output files can be recreated:
+distclean: clean
+	rm -rf scripts/*  
+	rm -f configure libtool config.h.in config.h

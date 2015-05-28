@@ -1,0 +1,66 @@
+Copyright @ 2006 Asbjorn Andersen <mind@hanafjedle.net>
+
+Documentation can be found in the header file "gsmc.h", the src/README
+file, or online at:
+	http://libgsmc.hanafjedle.net
+
+1. Quick build instructions, for the documentation challenged:
+	./configure && make install
+
+This will build a library which is native to your host. To test out
+your build:
+	sudo make check
+
+To build using a cross-compiler, you need to make certain your compiler
+is in your PATH variable. E.g., if you use the bash shell, give this command:
+	export PATH=/usr/local/arm/3.4.1/bin:$PATH
+
+Then run configure with the following option:
+	./configure --host arm-linux-gcc
+	make install
+
+By default, this will install the library in /usr/local/lib. To change
+the default installation directory, type `configure --help`
+
+To use this library when building your application, do one of the following:
+	- add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+		during execution
+
+	- add LIBDIR to the `LD_RUN_PATH' environment variable during linking
+
+	- use the `-Wl,--rpath -Wl,LIBDIR' linker flag
+
+	- have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+
+2. Cross tools
+
+Prebuilt cross toolchains are available at:
+	http://handhelds.org/moin/moin.cgi/PrebuiltToolchains
+
+3. Prebuilt binaries
+ 
+If you don't want the hassle of compiling the library yourself there's
+a precompiled-arm library available on the libgsmc website:
+	http://libgsmc.hanafjedle.net
+
+Or from:
+	http://supercomputer.org/libgmsmc
+
+4. autoconf maintainers
+
+Developers of libgsmc may, from time to time, want to tweak the autoconf
+structure in order to better support different architectures. If you want 
+to modify the autoconf files, the Makefile.autoconf can be used. To build 
+the configure and other scripts, just do:
+
+	make -f Makefile.autoconf distclean
+	make -f Makefile.autoconf configure
+	make -f Makefile.autoconf clean
+
+The "distclean" target will remove all the autoconf generated files 
+allow you to start from scratch. 
+
+After the files have been modified and tested, repeat the first two steps,
+and then generate the appropriate patch file. 
+

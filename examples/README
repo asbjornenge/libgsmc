@@ -1,0 +1,14 @@
+This directory contains the source code for various examples of how to use
+libgsmc. These examples are:
+
+	cli:		A simple command-line interface for making a call.
+
+	gsm_emulator:	A daemon process which emulates different types of
+			GSM modems. 
+
+	qt:		Under development. This is where examples of using
+			Trolltech's Qt framework will go.
+
+Note well: 
+	The gsm_emulator is not only used by the examples, but also by the 
+	testsuite. Thus, it must be built before either will work.

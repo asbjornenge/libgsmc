@@ -1,0 +1,39 @@
+This directory contains a working example of a phone command line interface,
+using libgsmc.
+
+This example application illustrates several things:
+	1. How a simple CLI based program works (phone_cli.c).
+	2. The basic interface of libgsmc.
+	3. How to enable debugging of the library.
+	4. How to use the psuedo GSM transceiver (gsm_emulator)
+		instead of real hardware.
+	5. How to enable debugging in real time.
+
+In order to run this example, you need to have either the GSM emulator
+running (which is in ../gsm_emulator), or you need to have an actual 
+GSM transceiver module hooked up to a serial or USB port. You are encouraged
+to use the emulator first, until you are comfortable working with libgsmc,
+as that won't cost you any money for the phone network.
+
+This example will focus on the emulator.
+
+Bring up another xterm window, and in it go to the ../gsm_emulator directory.
+From there, start up the emulator, by typing the following command from the 
+shell:
+	 ./gsm_emulator 
+
+This will give you some output like:
+	Psuedo Modem is on device: /dev/pts/15
+
+You are now ready to run the phone_cli. Just do the following:
+	./phone_cli /dev/pts/15 867-5309
+
+To increase the number of debug messages output by gsm_emulator, just
+send a `kill -USR1` to the gsm_emulator process. To decrease it, send
+a `kill -USR2`. The emulator will pick up the message, and increase/decrease
+the level of verbosity for output. Each kill signal changes the level by 1.
+
+To change the level of the debugging output in the phone_cli, just change
+this line appropriately:
+	lgdebug_init(D_ALL, NULL);
+

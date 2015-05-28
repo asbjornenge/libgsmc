@@ -1,0 +1,49 @@
+##### Do not change or remove these lines. #####
+Format: 1.22
+Data: 1(fGcpNot3333RuEG3E8\f3IHu`HpEE8\`37uHA6Ip9G3o8Y`6E9X/2MDM236H9)
+##### You can edit below this point. #####
+
+
+# You can add a title and sub-title to your menu.
+# Just add "Title: [project name]" and "SubTitle: [subtitle]" lines here.
+
+# You can add a footer to your documentation.  Just add a
+# "Footer: [text]" line here.  If you want to add a copyright notice,
+# this would be the place to do it.
+
+
+# --------------------------------------------------------------------------
+# 
+# Cut and paste the lines below to change the order in which your files
+# appear on the menu.  Don't worry about adding or removing files, Natural
+# Docs will take care of that.
+# 
+# You can further organize the menu by grouping the entries.  Add a
+# "Group: [name] {" line to start a group, and add a "}" to end it.  Groups
+# can appear within each other.
+# 
+# You can add text and web links to the menu by adding "Text: [text]" and
+# "Link: [name] ([URL])" lines, respectively.
+# 
+# The formatting and comments are auto-generated, so don't worry about
+# neatness when editing the file.  Natural Docs will clean it up the next
+# time it is run.  When working with groups, just deal with the braces and
+# forget about the indentation and comments.
+# 
+# You can use this file on other computers even if they use different
+# directories.  As long as the command line points to the same source files,
+# Natural Docs will be able to correct the locations automatically.
+# 
+# --------------------------------------------------------------------------
+
+
+File: gsmc.h  (no auto-title, /home/mind/programming/workspace/libgsmc v0.1.0/src/gsmc.h)
+
+Group: Indexes  {
+
+   Index: Everything
+   Class Index: Classes
+   Function Index: Functions
+   File Index: Files
+   }  # Group: Indexes
+

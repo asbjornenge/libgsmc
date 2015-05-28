@@ -1,0 +1,19 @@
+
+This file is a record of user-visible changes to the libgsmc package. There's
+no strict format, but the changes to the most recent version should appear 
+at the top of the file.
+
+Release libgsmc_v0.2.0:
+	Major Release. 
+	- Added a GSM emulator, so that you aren't required
+		to have actual hardware for application development. 
+	- Added a framework to support any implementation of the ETSI 07.07 
+	specification. 
+	- Added a framework for sample applications. 
+	- Added a sample CLI-based interface. 
+	- Added DejaGNU support for POSIX-compliant testing.
+
+Release libgsmc_v0.1.0.d1:
+	This version contains all of the support required for the GNU
+	autoconf, automake, et. al. software, to enable more flexibility
+	in building, rather than just the ARM architecture.

@@ -1,0 +1,33 @@
+This directory contains the tests for libgsmc. In order to run the
+entire suite by hand, one simply issues the command:
+	
+	runtest
+
+This assumes that the GNU testing framework "dejagnu" is installed on 
+your system (it comes with many Linux distros by default, as DejaGNU is
+a part of many core GNU utilities).
+
+The tests here are divided into the following categories:
+	./basic: 	These tests primarily insure that your system
+			is set up properly. If your system is misconfigured
+			(E.g. kermit isn't installed), the rest of the tests
+			won't work.
+
+	./section8:	These are tests of Section 8 of the ETSI specification.
+
+References:
+The best quick dejagnu reference is in example/hello/README of the
+dejagnu source tree.
+
+NOTE WELL: This suite uses kermit, and on many Linux distros, kermit has
+	problems. In short, the locking mechanism is ancient, and typically
+	requires you to violate standard security policies.
+
+	The simplest solution is to just run this suite as root.
+	The proper solution is to fix kermit so that one can just issue
+	the following simple command as a normal user:
+	
+	"kermit -l /dev/pts/20 -b 38400"
+
+	The proper solution is to fix the kermit source code, but that's
+	unlikely to happen.

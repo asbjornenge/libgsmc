@@ -1,0 +1,29 @@
+This directory contains the source code for the gsm_emulator, which is
+a program that emulates different types of GSM modems. 
+
+To use it, just start it. It will report which terminal device that it is
+listening to. E.g.: 
+	./gsm_emulator
+	Psuedo Modem is on device: /dev/pts/15
+
+Once you see this output, any program can now talk /dev/pts/15 and will
+receive an appropriate ETSI response whenever an ETSI modem command is
+given. E.g.:
+	Sending an "AT" string will result in an "OK" string being returned.
+
+One can even use minicom, kermit, tip, et. al., to talk to this emulated
+modem.
+
+The gsm_emulator is not only used by the examples, but also by the testsuite.
+Thus, it must be built before either will work.
+
+To increase the number of debug messages output by gsm_emulator, just
+send a `killall -s USR1 gsm_emulator `. To decrease it, send a 
+`killall -s USR2 gsm_emulator`. The emulator will pick up the message, 
+and increase/decrease the level of verbosity for output. Each kill signal 
+changes the level by 1.
+
+You will see an error message from the gsm_emulator, related to the select(2)
+call. This can be ignored. Currently it's deliberately not being handled,
+for example purposes. What one does with it is really application specific.
+

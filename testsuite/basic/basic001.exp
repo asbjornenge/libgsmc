@@ -1,0 +1,60 @@
+#   Copyright (C) 1997 Free Software Foundation, Inc.
+# Original author: dwight at supercomputer.org
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.  
+# basic:	Basic functionality test of whether we can connect to the GSM 
+#		emulated modem. If this test doesn't work, nothing else will.
+load_config gsmtest.exp
+
+proc basic001_version {} { puts "basic001 test version 1.0"}
+
+gsm_version
+basic001_version
+
+gsm_start
+set mydevice $device
+send_user "Using device $mydevice\n"
+if {$mydevice == "" } { 
+	fail "Bad device" 
+}
+
+# start up kermit:
+spawn /usr/bin/kermit -b 38400 -l $mydevice -c  -q
+set kermit_id $spawn_id
+set pfrv -1
+
+send "AT\n"
+
+# send_user "DEBUG: sent AT\n"
+
+set timeout 30
+expect {
+	"OK" {	puts "Got an OK response\n" ; 
+		puts $expect_out(0,string) 
+		set pfrv 1
+	}
+	timeout {
+		puts "Response timed out: "
+		puts  [lindex $expect_out(buffer) 0]
+	}
+}
+
+gsm_exit
+
+if {$pfrv == 1} { 
+	pass "Test passed" 
+} else {
+	fail "Test failed" 
+}

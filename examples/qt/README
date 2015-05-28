@@ -1,0 +1,12 @@
+This directory contains examples of how to use libgsmc. This is just
+an overview; see the README files in each directory for more specifics.
+
+NOTE: These directories are currently empty. The work going on here
+is still in progress. So this is a preview of coming future attractions.
+
+The examples in these directories are:
+
+qt-cli-gui:  An example of how to share Command Line functionality with 
+		a Graphical User Interface. You can either make a phone
+		call via a shell command, or by bringing up a GUI and
+		clicking on some buttons.

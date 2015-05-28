@@ -1,0 +1,43 @@
+This file contains the changes that are made to a package. The format of this 
+file is quite strict. See the book "Autoconf, Automake and Libtool",
+section 5.5 "Documentation and ChangeLogs".
+
+------------------------
+2007-03-19:	dwight at supercomputer.org
+	* Release 0.2.2 
+	* Silicon Laboratories for the HTC Blueangel. 
+	* etsi_init() routine to select a specific manufacturer. 
+	* openphone() now supports manufacturer specific selection.
+	* debug output now includes the time down to millisecond resolution
+
+2007-03-03:	dwight at supercomputer.org
+	* Expanded debugging support to include timestamping to microsecond 
+	  granularity.
+
+2007-03-02:	dwight at supercomputer.org
+	* CVS restructuring
+
+2007-02-22:	dwight at supercomputer.org	
+	* Added configurable debugging output, via command line arguments.
+	* Added configurable debugging output, via signal(2)s.
+	* Added a GSM emulator program, which can mimic any supported GSM modem.
+	* Added a sample CLI program which can call a phone number.
+	* Added a framework for supporting the full ETSI 07.07 GSM standard.
+	* Added a plugin framework which allows one to easily add support 
+		 for any new GSM modem that follows the ESTI GSM specification.
+	* Added support for the Telit GSM modem, for making calls.
+	* Using the above framework, modified select routines to reduce the
+		exposure to buffer overflows.
+	* Added support for the DejaGNU testing framework.
+	* Added tests for the currently implemented ETSI functionality.
+	* Bug Fix:  Exiting the phone program doesn't restore the
+			stty parameters properly. 
+	* Bug Fix:  term_exitfunc() was trying to reset a device which
+			wasn't a terminal. Bad fd.
+	* Bug Fix:  term_s structure wasn't initialized properly. It was set 
+			to nulls.
+
+
+
+2006-06-17:	dwight at supercomputer.org
+	* Added support for autoconf.
